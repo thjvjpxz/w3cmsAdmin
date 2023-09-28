@@ -1,0 +1,6 @@
+.color-danger {
+    font-weight: 500;
+}
+.color-danger:hover {
+    color: #f46b59 !important;
+}
