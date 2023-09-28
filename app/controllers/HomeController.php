@@ -1,6 +1,6 @@
 <?php
     require_once ('../app/models/UserModel.php');
-//    require_once ('../app/models/Use.php');
+    require_once ('../app/models/User.php');
 //    require_once ('../config/Database.php');
     class HomeController {
         private UserModel $userModel;
@@ -38,5 +38,25 @@
                 unset($_SESSION['isLogin']);
                 header('Location: .?a=login');
             }
+        }
+
+        public function register() : void {
+            if (isset($_POST['btnAdd'])) {
+                $uname = $_POST['uname'];
+                $email = $_POST['email'];
+                $pass = $_POST['pass'];
+                if ($pass != $_POST['re-pass']) {
+                    header('Location: .?a=register&err=Password and Re-password not match');
+                    return;
+                }
+                $user_new = new User($uname, $pass, $email);
+//                echo "<pre>";
+//                print_r($user_new);
+//                echo "</pre>";
+                $noti = $this->userModel->createUser($user_new);
+
+                header("Location: .?a=register&err=$noti");
+            }
+            require_once('../app/views/register.php');
         }
     }

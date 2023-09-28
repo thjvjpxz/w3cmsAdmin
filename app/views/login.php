@@ -36,6 +36,7 @@
                     }
                 ?>
                 <button class="btn btn-primary w-100 mt-2" name="btnLogin" type="submit">Login</button>
+                <a href=".?a=register" class="btn btn-secondary w-100 mt-2">Register</a>
             </form>
         </div>
     </div>
